@@ -14,8 +14,8 @@ yarn
 
 Live Demo
 
--Live Demo Link : https://rick-morty-characters-rust.vercel.app/
--Loom Link   : 
+-Live Demo Link : https://rick-morty-zeta-one.vercel.app/
+-Loom Link   :  https://www.loom.com/share/581cb54cd2b54a99aebcf840671461f0
 
 
 Getting Started
