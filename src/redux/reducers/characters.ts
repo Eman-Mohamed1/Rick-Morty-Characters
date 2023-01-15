@@ -7,7 +7,10 @@ import { CharactersListDispatchTypes } from '../actions/types';
 const initalState = {
     loading: false,
     characters: [],
-    error: " ",
+    error: {
+        status:false,
+        message:' '
+    },
     page: 1,
 } as CharactersListState
 
@@ -18,14 +21,14 @@ const charactersReducer = (state: CharactersListState = initalState, action: Cha
                 ...state,
                 characters: [],
                 loading: true,
-                error: " "
+                error: action.payload.error
             };
         case FETCHCHARACTERSLISTSUCCESS:
             return {
                 ...state,
                 characters: action.payload.characters,
                 loading: false,
-                error: " "
+                error: action.payload.error
 
             };
         case FETCHCHARACTERSLISTERROR:

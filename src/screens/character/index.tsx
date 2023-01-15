@@ -16,7 +16,6 @@ const CharacterDetails = () => {
   const dispatch = useAppDispatch()
   const { character, loading, error } = useAppSelector((state) => state.character)
 
-
   useEffect(() => {
     if (id) {
       dispatch(fetchCharacter(id))
@@ -28,13 +27,13 @@ const CharacterDetails = () => {
 
       {!loading ?
         (<Box className={styles.characterPageContainer} >
-          {character ? (
+          { character && Object.keys(character).length !== 0 ? (
             <DetailsCard
               character={character}
             />
           ) :
-            error ? (
-              <Error error={error} />
+            error && error.status ===true ? (
+              <Error error={error.message} />
             )
               :
               (

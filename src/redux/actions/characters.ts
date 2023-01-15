@@ -6,7 +6,7 @@ import { CharactersListDispatchTypes } from "./types";
 const endPoint = new GraphQLClient("https://rickandmortyapi.com/graphql/");
 
 export const fetchCharacters = (page: number) => async (dispatch: Dispatch<CharactersListDispatchTypes>) => {
-  dispatch({ type: FETCHCHARACTERSLISTLOADING, payload: { characters: [], error: ' ', loading: true } })
+  dispatch({ type: FETCHCHARACTERSLISTLOADING, payload: { characters: [], error: { status: false, message: ' ' }, loading: true, } })
 
   const CHARACTERS_QUERY = `
     {
@@ -36,10 +36,10 @@ export const fetchCharacters = (page: number) => async (dispatch: Dispatch<Chara
     `;
   try {
     const { characters } = await endPoint.request(CHARACTERS_QUERY);
-    dispatch({ type: FETCHCHARACTERSLISTSUCCESS, payload: { characters: characters.results, loading: false } })
+    dispatch({ type: FETCHCHARACTERSLISTSUCCESS, payload: { characters: characters.results, loading: false, error: { status: false, message: ' ' } } })
 
   } catch (err) {
-    dispatch({ type: FETCHCHARACTERSLISTERROR, payload: { characters: [], error: 'something went wrong while fetching list ', loading: false } })
+    dispatch({ type: FETCHCHARACTERSLISTERROR, payload: { characters: [], error: { status: true, message: 'something went wrong while fetching list ' }, loading: false } })
   }
 }
 

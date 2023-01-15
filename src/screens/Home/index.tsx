@@ -22,7 +22,7 @@ const Home = () => {
       dispatch(fetchCharacters(page))
     }
 
-  }, [page])
+  }, [dispatch, page])
 
   return (
     <Box className="container">
@@ -48,8 +48,9 @@ const Home = () => {
                     />
                   );
                 }) :
-                error ? (
-                  <Error error={error} />
+
+                error && error.status ? (
+                  <Error error={error.message} />
                 )
                   : (
                     <NotFound />

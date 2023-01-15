@@ -22,14 +22,20 @@ export interface CharactersType {
 export interface CharactersListState {
   loading: boolean,
   characters?: CharactersType[],
-  error?: string,
+  error?: {
+    status:boolean,
+    message:string
+},
   page?: number,
 
 }
 export interface CharacterDetailsState {
   loading: boolean,
-  error?: string,
-  character?: CharactersType
+    error?: {
+    status:boolean,
+    message:string
+},
+  character?: CharactersType | any
 
 }
 

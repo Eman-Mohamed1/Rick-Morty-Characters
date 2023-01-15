@@ -18,6 +18,7 @@ interface CardProps {
 
 
 export default function DetailsCard({ character }: CardProps) {
+
   const classes = useStyles();
   return (
 

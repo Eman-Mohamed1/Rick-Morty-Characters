@@ -6,7 +6,10 @@ import { FETCHCHARACTERERROR, FETCHCHARACTERLOADING, FETCHCHARACTERSUCCESS } fro
 
 const initalState = {
     loading: false,
-    error: " ",
+    error: {
+        status:false,
+        message:' '
+    },
     character: {}
 } as CharacterDetailsState
 
@@ -16,12 +19,15 @@ const characterReducer = (state: CharacterDetailsState = initalState, action: Ch
         case FETCHCHARACTERLOADING:
             return {
                 ...state,
-                loading: true
+                loading: true,
+                error: action.payload.error,
+                character: action.payload.character,
             };
         case FETCHCHARACTERSUCCESS:
             return {
                 ...state,
                 character: action.payload.character,
+                error: action.payload.error,
                 loading: false
             };
         case FETCHCHARACTERERROR:
