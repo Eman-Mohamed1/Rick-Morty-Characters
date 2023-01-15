@@ -25,7 +25,7 @@ const useStyles = makeStyles({
 
   },
   NoDataText: {
-    color: 'white',
+    color: 'black',
     fontWeight: 'bold',
     fontSize: 25
   },
